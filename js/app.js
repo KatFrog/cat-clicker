@@ -3,8 +3,8 @@
 
 //Variables
 let catCount = 0;
-let cat = document.getElementById('cat');
-let counter = document.getElementById('counter');
+const cat = document.getElementById('cat');
+const counter = document.getElementById('counter');
 
 cat.addEventListener('click', function(event) {
 	catCount += 1;
