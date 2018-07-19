@@ -1,7 +1,9 @@
 body {
+    height: 100%;
     margin: auto;
     padding: 0;
     text-align: center;
+    width: 100%;
 }
 
 .container {
@@ -10,4 +12,14 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.image_row {
+    display: flex;
+    flex-direction: row;
+}
+
+img {
+    height: 80%;
+    width: 80%
 }
