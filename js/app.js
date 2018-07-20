@@ -102,13 +102,14 @@ function showCat(cat) {
 
 	// Display the cat's Name
 	main_name = document.createElement('p');
-	main_name.textContent = `${cat.name}`;
+	main_name.innerHTML = `<b>${cat.name}</b>`;
 	main_area.appendChild(main_name);
 
 	// Display the cat's picture
 	main_image = document.createElement('img');
 	main_image.setAttribute('src', `${cat.url}`);
 	main_image.setAttribute('alt', `${cat.name}`);
+	main_image.setAttribute('class', 'main_image');
 	main_area.appendChild(main_image);
 
 	// Display the cat's counter
@@ -132,8 +133,8 @@ for (let i = 0; i < cats.length; ++i) {
 
 	newImage = document.createElement('img');
 	newImage.setAttribute('src', `${currentCat.tn_url}`);
-	newImage.setAttribute('width', '100px');
-	newImage.setAttribute('height', '100px');
+	newImage.setAttribute('max-width', '100px');
+	newImage.setAttribute('max-height', '100px');
 	newCat.appendChild(newImage);
 
 	newCat.addEventListener('click', function() {
