@@ -1,3 +1,5 @@
+/* TO DO:  Make the description under the main image look pretty */
+
 body {
     height: 100%;
     margin: auto;
@@ -16,8 +18,8 @@ body {
 
 .column1 {
     grid-column: 1 / 2;
-    min-width: 10%;
     max-width: 15%;
+    min-width: 10%;
     padding-right: 20px;
 }
 
