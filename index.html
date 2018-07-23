@@ -13,9 +13,30 @@
 
     <body>
         <div class="container" id="container">
-            <h1>My Cat Clicker</h1>
+            <div class="top_row">
+                <h1>My Cat Clicker</h1>
+            </div>
             <div class="row image_row">
                 <div class="column1">
+                    <button id="admin" class="button">Admin</button>
+                    <form id="admin_form" class="admin_form hidden">
+                        <div>
+                            <label for="name" class="input">Name:  </label>
+                            <input type=text id="name" size=15 class="input">
+                        </div>
+                        <div>
+                            <label for="source" class="input">Source:  </label>
+                            <input type=text id="img_src" size=19 class="input">
+                        </div>
+                        <div>
+                            <label for="clicks" class="input">Number of Clicks:  </label>
+                            <input type=text id="clicks" size=4 class="input">
+                        </div>
+                        <div class="button-group">
+                            <button id="cancel" class="button">Cancel</button>
+                            <button id="save" class="button">Save</button>
+                        </div>
+                    </form>
                     <div class='cat-list' id="cat-list">
                     </div>
                 </div>
