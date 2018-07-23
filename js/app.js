@@ -77,53 +77,34 @@ const cats = [{
 ];
 
 //Variables
-let catCount = 0;
-let newCat,
+let clickCat,
+	newCat,
 	newImage,
 	random_cat;
 const cat_list = document.getElementById('cat-list');
+const main_area = document.getElementById('main_cat');
+const main_image = document.getElementById('cat_pic');
+const main_name = document.getElementById('cat_name');
+
+function clickCounter(countedCat) {
+	const main_counter = document.getElementById('cat_counter');
+	main_counter.textContent = `Times Clicked: ${countedCat.counter}`;
+}
 
 //Show the passed in cat object in the center of the page
 function showCat(cat) {
-	let main_image,
-		main_name,
-		main_counter;
-	const main_area = document.getElementById('main-cat');
-
-	// Show/update the click counter per cat
-	function clickCounter() {
-		main_counter.textContent = `Times Clicked: ${cat.counter}`;
-	}
-
-	// Empty the main area of any content
-	while (main_area.firstChild) {
-		main_area.removeChild(main_area.firstChild)
-	}
-
 	// Display the cat's Name
-	main_name = document.createElement('p');
 	main_name.innerHTML = `<b>${cat.name}</b>`;
-	main_area.appendChild(main_name);
 
 	// Display the cat's picture
-	main_image = document.createElement('img');
 	main_image.setAttribute('src', `${cat.url}`);
 	main_image.setAttribute('alt', `${cat.name}`);
-	main_image.setAttribute('class', 'main_image');
-	main_area.appendChild(main_image);
 
 	// Display the cat's counter
-	main_counter = document.createElement('p');
-	clickCounter();
-	main_area.appendChild(main_counter);
-
-	main_image.addEventListener('click', function() {
-		cat.counter += 1;
-		clickCounter();
-	});
+	clickCounter(cat);
 }
 
-// Loop to set up event listeners for each cat picture
+// Loop to set up event listeners for each cat thumbnail
 for (let i = 0; i < cats.length; ++i) {
 	let currentCat;
 	currentCat = cats[i]; // Current cat object;
@@ -139,10 +120,18 @@ for (let i = 0; i < cats.length; ++i) {
 
 	newCat.addEventListener('click', function() {
 		showCat(currentCat);
+		clickCat = currentCat;
 	});
 	cat_list.appendChild(newCat);
 }
 
+// Set up the event listener for the main images
+main_image.addEventListener('click', function() {
+	clickCat.counter += 1;
+	clickCounter(clickCat);
+})
+
 // Pick a random cat to show at the beginning
 random_cat = Math.floor(Math.random() * cats.length);
 showCat(cats[random_cat]);
+clickCat = cats[random_cat];
