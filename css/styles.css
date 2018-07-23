@@ -16,14 +16,36 @@ body {
     justify-content: center;
 }
 
+.top_row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.admin_form {
+    background-color: #ebedd0;
+    border: 3px blue solid;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    margin-top: 10px;
+    padding: 5px;
+    text-align: left;
+}
+
+.hidden {
+    display: none;
+}
+
+.input {
+    margin-bottom: 3px;
+}
+
 .column1 {
     height: 700px;
     max-width: 25%;
     min-width: 20%;
     padding-right: 20px;
 }
-
-/* .column2 {} */
 
 .image_row {
     display: flex;
