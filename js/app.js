@@ -77,8 +77,9 @@ const cats = [{
 ];
 
 //Variables
-let clickCat,
-	random_cat;
+let clickCat, // Records the cat currently being clicked
+	random_cat; // Used to randomly choose a cat at load Times
+
 // Constant pointing to where the thumbnails are inserted into HTML
 const cat_list = document.getElementById('cat-list');
 
@@ -86,6 +87,7 @@ const cat_list = document.getElementById('cat-list');
 const main_area = document.getElementById('main_cat');
 const main_image = document.getElementById('cat_pic');
 const main_name = document.getElementById('cat_name');
+const main_counter = document.getElementById('cat_counter');
 
 // Constants for the admin button and panel
 const cancel_button = document.getElementById('cancel');
@@ -96,8 +98,8 @@ const new_name = document.getElementById('name');
 const cat_img = document.getElementById('img_src');
 const cat_clicks = document.getElementById('clicks');
 
+// Changes the number of clicks without rendering the entire page.
 function clickCounter(countedCat) {
-	const main_counter = document.getElementById('cat_counter');
 	main_counter.textContent = `Times Clicked: ${countedCat.counter}`;
 }
 
@@ -116,10 +118,13 @@ function showCat(cat) {
 
 // Show the admin panel
 function showAdmin(cat) {
+	// Fill in the admin panel with data from the passed in cat object
 	new_name.value = `${cat.name}`;
 	cat_img.value = `${cat.url}`;
 	cat_clicks.value = `${cat.counter}`;
-	admin_panel.classList.remove('hidden');
+
+	admin_button.classList.add('hidden'); // Hide the admin button
+	admin_panel.classList.remove('hidden'); // Show the admin panel
 }
 
 function hideAdmin() {
@@ -128,12 +133,15 @@ function hideAdmin() {
 }
 
 function saveData(cat) {
+	// Update the object
 	cat.name = new_name.value;
 	cat.url = cat_img.value;
 	cat.counter = Number(cat_clicks.value);
+	// Render the page
 	showCat(cat);
 }
 
+// Creates the list of cats to choose from
 function createCatList() {
 	let newCat,
 		newImage;
@@ -165,18 +173,19 @@ function createCatList() {
 	}
 }
 
-// Set up the event listener for the main images
+// The event listener for the main images
 main_image.addEventListener('click', function() {
 	clickCat.counter += 1;
 	clickCounter(clickCat);
 })
 
-// Set up the event listener for the cancel save_button
+// The event listener for the cancel sbutton
 cancel_button.addEventListener('click', function(event) {
 	event.preventDefault();
 	hideAdmin();
 });
 
+// The event listener for the save button
 save_button.addEventListener('click', function(event) {
 	event.preventDefault();
 	saveData(clickCat);
@@ -184,14 +193,14 @@ save_button.addEventListener('click', function(event) {
 	hideAdmin();
 });
 
+// The event listener for the admin button
 admin_button.addEventListener('click', function(event) {
 	event.preventDefault();
-	admin_button.classList.add('hidden');
 	showAdmin(clickCat);
 });
 
-// Pick a random cat to show at the beginning
+// Initial code for starting the app
 createCatList();
-random_cat = Math.floor(Math.random() * cats.length);
-showCat(cats[random_cat]);
+random_cat = Math.floor(Math.random() * cats.length); // Generate random number
+showCat(cats[random_cat]); // Pick a random cat to show at the beginning
 clickCat = cats[random_cat];
